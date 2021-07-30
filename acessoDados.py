@@ -23,6 +23,7 @@ print("Mensagem recebida: {}".format(mensagem))
 
 erro = False
 text = ""
+# Tenta ler o arquivo. Caso não consiga, a exceção disparada coloca a bool 'erro' como True.
 try:
 	file = open(mensagem, "r")
 	for line in file:

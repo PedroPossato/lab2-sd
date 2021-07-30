@@ -20,6 +20,8 @@ print()
 # depois de conectar-se, espera uma mensagem (chamada pode ser BLOQUEANTE))
 msg = novoSock.recv(1024) # argumento indica a qtde maxima de dados
 mensagem = str(msg, encoding='utf-8')
+
+# separa a mensagem em arquivo e palavra
 arquivo = mensagem.split('\n')[0]
 palavra = mensagem.split('\n')[1]
 print("Mensagem recebida: {}".format(mensagem))
@@ -27,7 +29,7 @@ print("Arquivo considerado: {}\nPalavra considerada: {}".format(arquivo, palavra
 
 # Início do bloco de código que faz a comunicação com acessoDados.py
 HOST2 = 'localhost'
-PORTA2 = 6000
+PORTA2 = 6000 # porta diferente para não termos problema em acessar a mesma porta
 # cria socket
 sock2 = socket.socket() # default: socket.AF_INET, socket.SOCK_STREAM 
 
@@ -43,6 +45,7 @@ mensagem2 = str(msg2, encoding='utf-8')
 sock2.close() 
 # Fim do bloco de código que faz a comunicação com acessoDados.py
 
+# Retorna uma mensagem de erro em caso de erro, ou o número de ocorrências da palavra, em caso de êxito.
 if mensagem2 == 'Arquivo não encontrado':
 	msg = "Erro ao ler arquivo: arquivo não foi encontrado."
 	print(msg)
